@@ -1,0 +1,14 @@
+{
+  "name": "restful-angularjs-nodejs",
+  "version": "1.0.0",
+  "description": "An example of using the Node.js SDK for Couchbase with an AngularJS frontend",
+  "author": "Couchbase, Inc.",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "couchbase": "^2.0.8",
+    "express": "^4.13.0",
+    "node-forge": "^0.6.30",
+    "uuid": "^2.0.1"
+  }
+}
