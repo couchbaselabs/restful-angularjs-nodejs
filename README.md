@@ -28,7 +28,7 @@ This will install all dependencies as defined in the **package.json** file.
 
 ### Database
 
-This project requires Couchbase 4.0 or higher in order to function because it makes use of the N1QL query language.  With Couchbase Server installed, create a new bucket called **restful-example** or whatever you've named it in your **config.json** file.
+This project requires Couchbase 4.0 or higher in order to function because it makes use of the N1QL query language.  With Couchbase Server installed, create a new bucket called **restful-sample** or whatever you've named it in your **config.json** file.
 
 We're not done yet.  In order to use N1QL queries in your application you must create a primary index on your bucket.  This can be done by using the Couchbase Query Client (CBQ).
 
@@ -47,7 +47,7 @@ C:/Program Files/Couchbase/Server/bin/cbq.exe
 With CBQ running, create an index like so:
 
 ```
-CREATE PRIMARY INDEX ON `restful-example` USING GSI;
+CREATE PRIMARY INDEX ON `restful-sample` USING GSI;
 ```
 
 Your database is now ready for use.
