@@ -1,3 +1,9 @@
+node_modules
+
+angular/public
+angular/dist
+angular/tmp
+
 .DS_Store*
 Thumbs.db*
-node_modules
+~*

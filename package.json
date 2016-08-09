@@ -1,6 +1,6 @@
 {
   "name": "restful-angularjs-nodejs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "An example of using the Node.js SDK for Couchbase with an AngularJS frontend",
   "author": "Couchbase, Inc.",
   "license": "MIT",
