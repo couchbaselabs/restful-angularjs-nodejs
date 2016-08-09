@@ -1,0 +1,16 @@
+<form>
+    <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" class="form-control" id="firstname" placeholder="First Name" [(ngModel)]="firstname">
+    </div>
+    <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" class="form-control" id="lastname" placeholder="Last Name" [(ngModel)]="lastname">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" placeholder="Email" [(ngModel)]="email">
+    </div>
+    <button type="button" class="btn btn-danger" [routerLink]="['/']">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="save()">Save</button>
+</form>
