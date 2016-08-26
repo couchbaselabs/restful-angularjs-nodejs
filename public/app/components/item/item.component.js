@@ -17,9 +17,11 @@ var ItemComponent = (function () {
         this.http = http;
         this.route = route;
         this.location = location;
-        this.firstname = "";
-        this.lastname = "";
-        this.email = "";
+        this.person = {
+            "firstname": "",
+            "lastname": "",
+            "email": ""
+        };
     }
     ItemComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -28,9 +30,8 @@ var ItemComponent = (function () {
                 _this.http.get("http://localhost:3000/api/get?document_id=" + params["documentId"])
                     .map(function (result) { return result.json(); })
                     .subscribe(function (results) {
-                    _this.firstname = results[0].firstname;
-                    _this.lastname = results[0].lastname;
-                    _this.email = results[0].email;
+                    _this.person = results[0];
+                    _this.person.document_id = params["documentId"];
                 }, function (error) {
                     console.error(error);
                 });
@@ -41,7 +42,7 @@ var ItemComponent = (function () {
         var _this = this;
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        this.http.post("http://localhost:3000/api/save", JSON.stringify({ firstname: this.firstname, lastname: this.lastname, email: this.email }), options)
+        this.http.post("http://localhost:3000/api/save", JSON.stringify(this.person), options)
             .map(function (result) { return result.json(); })
             .subscribe(function (results) {
             _this.location.back();

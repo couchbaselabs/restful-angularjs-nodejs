@@ -9,14 +9,14 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 })
 export class ItemComponent implements OnInit {
 
-    public firstname: string;
-    public lastname: string;
-    public email: string;
+    public person: any;
 
     public constructor(private http: Http, private route: ActivatedRoute, private location: Location) {
-        this.firstname = "";
-        this.lastname = "";
-        this.email = "";
+        this.person = {
+            "firstname": "",
+            "lastname": "",
+            "email": ""
+        }
     }
 
     public ngOnInit() {
@@ -25,9 +25,8 @@ export class ItemComponent implements OnInit {
                 this.http.get("http://localhost:3000/api/get?document_id=" + params["documentId"])
                     .map(result => result.json())
                     .subscribe(results => {
-                        this.firstname = results[0].firstname;
-                        this.lastname = results[0].lastname;
-                        this.email = results[0].email;
+                        this.person = results[0];
+                        this.person.document_id = params["documentId"];
                     }, error => {
                         console.error(error);
                     });
@@ -38,7 +37,7 @@ export class ItemComponent implements OnInit {
     public save() {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-        this.http.post("http://localhost:3000/api/save", JSON.stringify({firstname: this.firstname, lastname: this.lastname, email: this.email}), options)
+        this.http.post("http://localhost:3000/api/save", JSON.stringify(this.person), options)
             .map(result => result.json())
             .subscribe(results => {
                 this.location.back();
