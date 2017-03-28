@@ -15,13 +15,13 @@ app.use(function(req, res, next) {
 });
 
 // Global declaration of the Couchbase server and bucket to be used
-module.exports.bucket = (new couchbase.Cluster(config.couchbase.server)).openBucket(config.couchbase.bucket);
+module.exports.bucket = (new couchbase.Cluster(process.env.COUCHBASE_HOST || config.couchbase.server)).openBucket(process.env.COUCHBASE_BUCKET || config.couchbase.bucket);
 
 app.use(express.static(path.join(__dirname, "public")));
 
 // All endpoints to be used in this application
 var routes = require("./routes/routes.js")(app);
 
-var server = app.listen(3000, function () {
+var server = app.listen(process.env.COUCHBASE_PORT || 3000, function () {
     console.log("Listening on port %s...", server.address().port);
 });
