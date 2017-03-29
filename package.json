@@ -5,7 +5,8 @@
   "author": "Couchbase, Inc.",
   "license": "MIT",
   "scripts": {
-      "start": "forever start app.js"
+      "start": "forever start app.js",
+      "stop": "forever stopall"
   },
   "dependencies": {
     "body-parser": "^1.13.1",
